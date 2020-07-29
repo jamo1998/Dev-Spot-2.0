@@ -55,4 +55,19 @@ router.get('/', async (req, res) => {
   res.json(projects);
 })
 
+router.put('/:id', async (req, res) => {
+  try {
+    const project = await Project.update(
+      { _id: req.params.id }, 
+      { $push: { applicants: req.body } }
+  );
+    res.json(project);
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({ msg: 'Could not update the project'})
+  }
+  
+})
+
+
 module.exports = router;
