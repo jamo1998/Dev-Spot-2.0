@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from '../misc/ErrorNotice';
+import M from 'materialize-css';
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -49,67 +50,84 @@ export default function Register() {
   };
 
   return (
-    <div className="page">
-      <h2>Register</h2>
+    <div className="container loginContainer row">
+      <h5>Get coding with us:</h5>
   {error && (
     <ErrorNotice message={error} clearError={() => setError(undefined)} /> 
   )}
       <form className="register-form" onSubmit={submit}>
-        <label htmlFor="register-email">Email</label>
-        <input
-          id="register-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="register-password">Password</label>
-        <input
-          id="register-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          placeholder="Verify Password"
-          type="password"
-          onChange={(e) => setPasswordCheck(e.target.value)}
-        />
-
-        <label htmlFor="register-username">Username</label>
-        <input
-          id="register-username"
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <label htmlFor="register-bio">Bio</label>
-        <input
-          id="register-bio"
-          type="text"
-          onChange={(e) => setBio(e.target.value)}
-        />
-
-        <label htmlFor="register-githubURL">Github URL</label>
-        <input
-          id="register-githubURL"
-          type="text"
-          onChange={(e) => setGithubURL(e.target.value)}
-        />
-
-        <label htmlFor="register-linkedInURL">LinkedIn URL</label>
-        <input
-          id="register-linkedInURL"
-          type="text"
-          onChange={(e) => setLinkedInURL(e.target.value)}
-        />
-
-        <label htmlFor="register-portfolioURL">Portfolio URL</label>
-        <input
-          id="register-portfolioURL"
-          type="text"
-          onChange={(e) => setPortfolioURL(e.target.value)}
-        />
-
-        <input type="submit" value="Register" />
+          <div className="input-field col s12">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            className="validate"
+            required
+          />
+          <label htmlFor="email">Email</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              id="register-password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+             <label htmlFor="register-password">Password</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              type="password"
+              onChange={(e) => setPasswordCheck(e.target.value)}
+              required
+            />
+            <label htmlFor="verify-password">Verify Password</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              id="register-username"
+              type="text"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+                <label htmlFor="register-username">Username</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              id="register-bio"
+              type="text"
+              onChange={(e) => setBio(e.target.value)}
+            />
+            <label htmlFor="register-bio">Bio</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              id="register-githubURL"
+              type="text"
+              onChange={(e) => setGithubURL(e.target.value)}
+            />
+               <label htmlFor="register-githubURL">Github URL</label>
+          </div>
+          <div className="input-field col s12">
+            <input
+              id="register-linkedInURL"
+              type="text"
+              onChange={(e) => setLinkedInURL(e.target.value)}
+            />
+             <label htmlFor="register-linkedInURL">LinkedIn URL</label>
+          </div>
+        <div className="input-field col s12">
+          <input
+            id="register-portfolioURL"
+            type="text"
+            onChange={(e) => setPortfolioURL(e.target.value)}
+          />
+          <label htmlFor="register-portfolioURL">Portfolio URL</label>
+        </div>
+        <div className="submitContainer col s12">
+          <input type="submit" className="waves-effect waves-light btn-large" value="Submit" />
+        </div>
       </form>
     </div>
   );

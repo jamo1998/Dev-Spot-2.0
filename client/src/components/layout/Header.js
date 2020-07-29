@@ -5,7 +5,6 @@ import AuthOptions from '../auth/AuthOptions';
 export default function Header() {
   return (
     <header id='header'>
-      <Link to="/"><h1 className="title">Dev Spot</h1></Link>
       <AuthOptions />
     </header>
   )
