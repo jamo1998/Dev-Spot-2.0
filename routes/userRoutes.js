@@ -101,7 +101,10 @@ router.post('/login', async (req, res) => {
       user: {
         id: user._id,
         username: user.username,
-        email: user.email
+        bio: user.bio,
+        githubURL: user.githubURL,
+        linkedinURL: user.linkedinURL,
+        portfolioURL: user.portfolioURL
       }
     });
   } catch (err) {
@@ -137,8 +140,24 @@ router.post("/tokenIsValid", async (req, res) => {
 
     return res.json(true);
   } catch (err) {
+    console.log(err.message);
+    if (err.message === 'jwt malformed') {
+      return res.json(false)
+    }
     res.status(500).json({ error: err.message})
   }
+});
+
+router.get('/', auth, async (req, res) => {
+  const user = await User.findById(req.user);
+  res.json({
+    username: user.username,
+    bio: user.bio,
+    githubURL: user.githubURL,
+    linkedinURL: user.linkedinURL,
+    portfolioURL: user.portfolioURL,
+    id: user._id
+  })
 })
 
 module.exports = router;
