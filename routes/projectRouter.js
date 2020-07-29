@@ -22,6 +22,7 @@ router.post("/new", auth, async (req, res) => {
   }
 })
 
+// Get all projects for a single user
 router.get('/all', auth, async (req, res) => {
   const projects = await Project.find({
     userId: req.user
@@ -29,6 +30,7 @@ router.get('/all', auth, async (req, res) => {
   res.json(projects)
 })
 
+// Delete a project by ID
 router.delete('/:id', auth, async (req, res) => {
   const project = await Project.findOne({userId: req.user, _id: req.params.id});
   if (!project){
@@ -36,6 +38,21 @@ router.delete('/:id', auth, async (req, res) => {
   }
   const deletedProject = await Project.findByIdAndDelete(req.params.id);
   res.json(deletedProject)
+})
+
+// Get project details for user
+router.get('/:id', auth, async (req, res) => {
+  const project = await Project.findOne({ userId: req.user, _id: req.params.id});
+  res.json(project);
+})
+
+// Get all projects for every user
+router.get('/', async (req, res) => {
+  const projects = await Project.find({});
+  if (!projects) {
+    return res.status(400).json({ msg: 'No project found with this ID that belongs to the current user.'})
+  }
+  res.json(projects);
 })
 
 module.exports = router;
