@@ -36,7 +36,7 @@ export default function AuthOptions() {
         </>
       ) : (
         <>
-          <ul id="nav-mobile" className="right hide-on-small-only">
+        <ul id="nav-mobile" className="right hide-on-small-only">
           <li> <Link className="nav-link" to='/login'>Login</Link> </li>
           <li> <Link className="nav-link" to='/register'>Register</Link> </li>
         </ul>

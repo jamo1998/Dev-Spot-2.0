@@ -52,6 +52,7 @@ export default function Login() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br/>
         <div className="submitContainer col s12">
           <input type="submit" className="waves-effect waves-light btn-large" value="Submit" />
         </div>
