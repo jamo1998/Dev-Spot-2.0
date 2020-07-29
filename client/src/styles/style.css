@@ -1,0 +1,34 @@
+
+.loginContainer{
+  border: 2px solid rgba(133, 133, 133, 0.76);
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-top: 2vw;
+  padding-bottom: 3vw;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  min-height: calc(100vh - 134px);
+  flex: 1 0 auto;
+}
+
+.submitContainer {
+ display: flex;
+ justify-content: flex-end;
+}
+.projectDescription {
+  border: 1px solid black;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}

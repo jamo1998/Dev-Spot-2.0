@@ -6,8 +6,9 @@ import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserContext from './context/UserContext';
+import 'materialize-css/dist/css/materialize.min.css';
+import './styles/style.css'
 
-import './style.css';
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -45,6 +46,7 @@ export default function App() {
     <BrowserRouter>
       <UserContext.Provider value={{ userData, setUserData}}>
         <Header />
+        <br />
         <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />

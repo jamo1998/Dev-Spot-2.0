@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 
 export default function AuthOptions() {
@@ -24,16 +24,27 @@ export default function AuthOptions() {
   }
 
   return (
-    <nav className="auth-options">
+    <nav> 
+      <div className="nav-wrapper container">
+      <Link to="/" className="left brand-logo">DevSpot</Link>
       {userData.user ? (
-        <button onClick={logout}>Log out</button>
+        <>
+        <ul id="nav-mobile" className="right hide-on-small-only">
+          <li> <Link className="nav-link" onClick={logout}>Logout</Link> </li>
+          <li> <Link className="nav-link" to='/'>Home</Link> </li>
+        </ul>
+        </>
       ) : (
         <>
-          <button onClick={register}>Register</button>
-          <button onClick={login}>Log in</button>
+          <ul id="nav-mobile" className="right hide-on-small-only">
+          <li> <Link className="nav-link" to='/login'>Login</Link> </li>
+          <li> <Link className="nav-link" to='/register'>Register</Link> </li>
+        </ul>
         </>
       )
       }    
+    </div>
     </nav>
+
   )
 }
