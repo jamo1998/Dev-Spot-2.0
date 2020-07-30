@@ -20,10 +20,12 @@ const UserSchema = new Schema({
     type: String
   },
   githubURL: {
-    type: String
+    type: String,
+    required: true
   },
   linkedinURL: {
-    type: String
+    type: String,
+    required: true
   },
   portfolioURL: {
     type: String
