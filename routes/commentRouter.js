@@ -4,11 +4,11 @@ const Project = require('../models/project')
 
 
 
-router.post('/:id/comments', function create(req, res) {
+router.post('/:id/comments', (req, res) => {
     Project.findById(req.params.id, (err, project) => {
         project.comments.push(req.body);
         project.save(function (err) {
-            res.redirect(`/project/${project._id}`);
+            res.redirect(`/projects/${project._id}`);
         });
     });
 })
@@ -35,15 +35,18 @@ router.post('/:id/comments', function create(req, res) {
 //     }
 // })
 
-router.delete('/:id/comments', (req, res) => {
-    // Equivalent to `parent.children.pull(_id)`
-    Project.comments.id(_id).remove();
-    // Equivalent to `parent.child = null`
-    Project.comments.remove();
-    Project.save(function (err) {
-        if (err) return handleError(err);
-        console.log('the comments were removed');
-    });
+router.delete('/:id/comments/:commentId', (req, res) => {
+    let commentIndex = Project.comments.findIndex(comment => comment._id == req.params.commentId)
+    if(commentIndex === -1) {
+        res.redirect('/projects')
+    } else {
+        Project.comments.splice(commentIndex, 1)
+        Project.save(function (err) {
+            if (err) return handleError(err);
+            console.log('the comments were removed');
+        });
+    }
+
     // Project.findById(req.params.id, (err, project) => {
     //     project.comments.pop(req.body)
     //     project.save(function (err) {
