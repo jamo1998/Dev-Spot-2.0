@@ -148,9 +148,8 @@ router.post("/tokenIsValid", async (req, res) => {
   }
 });
 
-
-router.get('/:id', async (req, res) => {
-  const user = await User.findById({ _id: req.params.id });
+router.get('/', auth, async (req, res) => {
+  const user = await User.findById(req.user);
   res.json({
     username: user.username,
     bio: user.bio,
