@@ -31,7 +31,11 @@ export default function AuthOptions() {
         <>
         <ul id="nav-mobile" className="right hide-on-small-only">
           <li> <button className="nav-link" onClick={logout}>Logout</button> </li>
-          <li> <button className="nav-link" to='/'>Home</button> </li>
+          <li> <Link className="nav-link" to='/'>Home</Link> </li>
+          <li> <Link className="nav-link" to='/createproject'>Create Project</Link> </li>
+          <li> <Link className="nav-link" to='/allprojects'>All Projects</Link> </li>
+          <li> <Link className="nav-link" to='/project'>Your Project</Link> </li>
+          <li> <Link className="nav-link" to='/alluserprojects'>All of your Projects</Link> </li>
         </ul>
         </>
       ) : (

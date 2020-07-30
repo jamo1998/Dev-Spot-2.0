@@ -6,43 +6,42 @@ import Axios from 'axios';
 export default function Home() {
   const {userData} = useContext(UserContext);
   const history = useHistory();
-  const [toggleRefresh, setToggleRefresh] = useState(false);
   const [userInfo, setUserInfo] = useState({})
 
-  // async function getUserData( ) {
-  //   //semantic naming^
-  //   if(!userData.user) history.push('/login');
-  //   try {
-  //     const userInfo = await Axios.get('http://localhost:5000/users', {
-  //       headers:{
-  //         "x-auth-token":userData.token
-  //       }
-  //     });
-  //     setUserInfo(userInfo.data);
-  //         console.log(userInfo.data)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  async function getUserData( ) {
+    //semantic naming^
+    if(!userData.user) history.push('/login');
+    try {
+      const userInfo = await Axios.get('http://localhost:5000/users', {
+        headers:{
+          "x-auth-token":userData.token
+        }
+      });
+      setUserInfo(userInfo.data);
+      // console.log(userInfo.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  // useEffect(() => {getUserData()}, []);
+  useEffect(() => {getUserData()}, []);
 
-  useEffect(() => {
-    Axios.get('http://localhost:5000/users', {
-      headers:{
-        "x-auth-token":userData.token
-      }
-    }).then(response => {
-      setUserInfo(response.data);
-    }).catch(err => {
-      console.log(err)
-    }, )
+  // useEffect(() => {
+  //   Axios.get('http://localhost:5000/users', {
+  //     headers:{
+  //       "x-auth-token":userData.token
+  //     }
+  //   }).then(response => {
+  //     setUserInfo(response.data);
+  //   }).catch(err => {
+  //     console.log(err)
+  //   }, )
 
-  }, [])
-
-  // if(!userInfo.user) {
-  //   return null
-  // }
+  // }, [])
+  
+  if(!userInfo.username) {
+    return null
+  }
 
   return (
     <div className="container">
