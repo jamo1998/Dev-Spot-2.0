@@ -34,3 +34,4 @@ mongoose.connection
 // setup routes
 app.use('/users', require('./routes/userRoutes'))
 app.use('/projects', require('./routes/projectRouter'))
+app.use('/comments', require('./routes/commentRouter'))

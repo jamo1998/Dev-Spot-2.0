@@ -1,5 +1,19 @@
 const mongoose = require('mongoose');
 
+const commentSchema = new mongoose.Schema({
+  name: {
+      type: String,
+      required: true
+  },
+  entry: {
+      type: String,
+      required: true
+  },
+  projectId: Number
+}, {
+  timestamps: true
+})
+
 const applicantSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -25,12 +39,13 @@ const projectSchema = new mongoose.Schema({
   },
   userId: {
     type:String,
-    required: true
+    // required: true
   },
   description: {
       type: String,
-      required: true
+      // required: true
   },
+  comments: [commentSchema],
   applicants: [applicantSchema],
   completed: {
       type: Boolean,
@@ -49,4 +64,3 @@ timestamps: true
 
 module.exports = Project = mongoose.model("project", projectSchema);
 
-module.exports = Project = mongoose.model("project", projectSchema);
