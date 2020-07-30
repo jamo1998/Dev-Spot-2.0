@@ -27,8 +27,17 @@ main {
  display: flex;
  justify-content: flex-end;
 }
+
 .projectDescription {
-  border: 1px solid black;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  border: 2px solid rgba(133, 133, 133, 0.76);
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: -webkit-box-shadow .25s;
+  transition: -webkit-box-shadow .25s;
+  transition: box-shadow .25s;
+  transition: box-shadow .25s, -webkit-box-shadow .25s;
 }

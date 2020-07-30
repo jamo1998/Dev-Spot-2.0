@@ -65,7 +65,7 @@ export default function Register() {
             className="validate"
             required
           />
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="black-text">Email</label>
           </div>
           <div className="input-field col s12">
             <input
@@ -74,7 +74,7 @@ export default function Register() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-             <label htmlFor="register-password">Password</label>
+             <label htmlFor="register-password" className="black-text">Password</label>
           </div>
           <div className="input-field col s12">
             <input
@@ -82,7 +82,7 @@ export default function Register() {
               onChange={(e) => setPasswordCheck(e.target.value)}
               required
             />
-            <label htmlFor="verify-password">Verify Password</label>
+            <label htmlFor="verify-password" className="black-text">Verify Password</label>
           </div>
           <div className="input-field col s12">
             <input
@@ -91,31 +91,26 @@ export default function Register() {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-                <label htmlFor="register-username">Username</label>
+                <label htmlFor="register-username" className="black-text">Username</label>
           </div>
-          <div className="input-field col s12">
-            <input
-              id="register-bio"
-              type="text"
-              onChange={(e) => setBio(e.target.value)}
-            />
-            <label htmlFor="register-bio">Bio</label>
-          </div>
+         
           <div className="input-field col s12">
             <input
               id="register-githubURL"
               type="text"
               onChange={(e) => setGithubURL(e.target.value)}
+              required
             />
-               <label htmlFor="register-githubURL">Github URL</label>
+               <label htmlFor="register-githubURL" className="black-text">Github URL</label>
           </div>
           <div className="input-field col s12">
             <input
               id="register-linkedInURL"
               type="text"
               onChange={(e) => setLinkedInURL(e.target.value)}
+              required
             />
-             <label htmlFor="register-linkedInURL">LinkedIn URL</label>
+             <label htmlFor="register-linkedInURL" className="black-text">LinkedIn URL</label>
           </div>
         <div className="input-field col s12">
           <input
@@ -123,7 +118,16 @@ export default function Register() {
             type="text"
             onChange={(e) => setPortfolioURL(e.target.value)}
           />
-          <label htmlFor="register-portfolioURL">Portfolio URL</label>
+          <label htmlFor="register-portfolioURL" className="black-text">Portfolio URL</label>
+        </div>
+        <div className="input-field col s12">
+            <textarea
+              id="register-bio"
+              type="text"
+              onChange={(e) => setBio(e.target.value)}
+              className="materialize-textarea"
+            />
+            <label htmlFor="register-bio" className="black-text">Bio</label>
         </div>
         <div className="submitContainer col s12">
           <input type="submit" className="waves-effect waves-light btn-large" value="Submit" />

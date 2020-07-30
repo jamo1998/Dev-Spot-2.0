@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from '../misc/ErrorNotice';
@@ -34,27 +34,36 @@ export default function Login() {
 
   return (
     <div className="container loginContainer">
-      <h2>Login</h2>
+      <h4>Login:</h4>
+      <br /> 
+
       {error && (
     <ErrorNotice message={error} clearError={() => setError(undefined)} /> 
   )}
       <form className="register-form" onSubmit={submit}>
-        <label htmlFor="login-email">Email</label>
-        <input
-          id="login-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="login-password">Password</label>
-        <input
-          id="login-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="input-field">
+       
+          <input
+            id="login-email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+           <label htmlFor="login-email" className="black-text">Email</label>
+        </div>
+        
+        <div className="input-field">
+          <input
+            id="login-password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label htmlFor="login-password" className="black-text">Password</label>
+        </div>
+        <Link to='/register' className="right">Don't have an account? Register here!</Link>
         <br/>
+        <br />
         <div className="submitContainer col s12">
-          <input type="submit" className="waves-effect waves-light btn-large" value="Submit" />
+          <input type="submit" className="waves-effect waves-light btn-large" value="Login" />
         </div>
       </form>
     </div>

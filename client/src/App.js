@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserContext from './context/UserContext';
+import ProjectDashboard from './components/pages/ProjectDashboard'
 import 'materialize-css/dist/css/materialize.min.css';
 import './styles/style.css'
 
@@ -52,6 +53,7 @@ export default function App() {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path='/project' component={ProjectDashboard} />
           </Switch>
         </div>
         
