@@ -13,7 +13,6 @@ export default function Home() {
 
   console.log(userData.user)
   return (
-    <div className="container"></div>
-
+    <div className="container">Home</div>
   )
 }
