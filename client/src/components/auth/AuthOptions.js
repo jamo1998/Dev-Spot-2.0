@@ -24,18 +24,18 @@ export default function AuthOptions() {
   }
 
   return (
-    <nav> 
+    <nav className="teal darken-4"> 
       <div className="nav-wrapper container">
       <Link to="/" className="left brand-logo">DevSpot</Link>
       {userData.user ? (
         <>
         <ul id="nav-mobile" className="right hide-on-small-only">
-          <li> <button className="nav-link" onClick={logout}>Logout</button> </li>
+          <li> <Link className="nav-link" to="/login" onClick={logout}>Logout</Link> </li>
           <li> <Link className="nav-link" to='/'>Home</Link> </li>
+          <li> <Link className="nav-link" to="/all-projects">Projects</Link> </li>
           <li> <Link className="nav-link" to='/createproject'>Create Project</Link> </li>
-          <li> <Link className="nav-link" to='/allprojects'>All Projects</Link> </li>
-          <li> <Link className="nav-link" to='/project'>Your Project</Link> </li>
-          <li> <Link className="nav-link" to='/alluserprojects'>All of your Projects</Link> </li>
+          {/* <li> <Link className="nav-link" to='/project'>Your Project</Link> </li> */}
+          <li> <Link className="nav-link" to='/all-projects'>All Projects</Link> </li> 
         </ul>
         </>
       ) : (
@@ -49,6 +49,7 @@ export default function AuthOptions() {
       }    
     </div>
     </nav>
-
   )
 }
+
+

@@ -2,6 +2,7 @@ import React, {useEffect, useContext, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import Axios from 'axios';
+// import DeleteButton from './DeleteButton';
 
 const AllUserProjects = () => {
     const {userData} = useContext(UserContext);
@@ -36,12 +37,15 @@ const AllUserProjects = () => {
         return(    
             <div className="card center" key={i}>
                 <li >
+                    <p>Title:</p>
                     {project.title}
                 </li>
                 <li>
+                    <p>Description:</p>
                     {project.description}
                 </li>
                 <li>
+                    <p>Release Date:</p>
                     {project.releaseDate}
                 </li>
             </div>

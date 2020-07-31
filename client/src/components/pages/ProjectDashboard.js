@@ -34,9 +34,9 @@ const ProjectDashboard = (props) => {
 
     useEffect(() => {getProjectData()}, []);
 
-    // if(!projectInfo) {
-    //     return null
-    // }
+    if(!projectInfo) {
+        return null
+    }
 
     // useEffect(() => {
     //     Axios.get('http://localhost:5000/projects/5f23257d61c6a5305c2ef0b6', {

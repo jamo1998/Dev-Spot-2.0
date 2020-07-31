@@ -1,44 +1,39 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, {useEffect, useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom';
-import UserContext from '../../context/UserContext';
-import Axios from 'axios';
+import Axios from 'axios'
+import UserContext from '../../context/UserContext'
+import ProjectCard from '../misc/ProjectCard';
 
 const AllProjects = () => {
-    const {userData} = useContext(UserContext);
+    const [projectInfo, setProjectInfo] = useState([])
+    const {userData} = useContext(UserContext)
     const history = useHistory();
-    const [projects, setProjects] = useState({})
-  
-    async function getAllProjects () {
-        if(!userData.user) history.push('/login');
-        try {
-            const projects = await Axios.get('http://localhost:5000/projects', {
-                headers:{
-                  "x-auth-token":userData.token
-                }
-            })
-            setProjects(projects)
-            console.log(projects)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+    console.log(userData)
     useEffect(() => {
-        Axios.get('http://localhost:5000/projects', {
-            headers:{
-              "x-auth-token":userData.token
-            }
-        })
-        .then(response => {
+        console.log("🥇 this is the axios call" )
+        Axios.get(`http://localhost:5000/projects`, {
             
-        })
-    }, []);
-
+        }).then(response => {
+            console.log(response)
+            setProjectInfo(response.data);
+            console.log(projectInfo)
+        }).catch(err => {
+            console.log(err)
+        }, )
+    }, [])
+    const projectsDisplay =  projectInfo.map((project, i) => {
+        console.log(project)
+        return (
+            <ProjectCard project={project} key={i} />
+        )
+    })
     return (
-        <div>
-            
+        <div className="container">
+            <div className="row">
+                <h4>All Projects:</h4>
+                { projectsDisplay }
+            </div>
         </div>
-    );
-};
-
+    )
+}
 export default AllProjects;

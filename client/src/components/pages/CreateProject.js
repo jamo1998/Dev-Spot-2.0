@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Redirect} from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import Axios from 'axios';
 
@@ -16,6 +16,7 @@ const CreateProject = () => {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [redirect, setRedirect] = useState(false)
     
     const handleTitle = (e) => {
         setTitle(e.target.value)
@@ -42,11 +43,15 @@ const CreateProject = () => {
                     "x-auth-token":userData.token
                 }
             })
+            setRedirect(true)
         } catch (error) {
             console.log(error)
         }
     }
 
+    if (redirect === true) {
+        return <Redirect to='/' />
+    }
 
     // const handleSubmit (e) => {
     //     e.preventDefault();
@@ -66,7 +71,7 @@ const CreateProject = () => {
         <div className="create-a-project">
             <div className="row">
                 <div className="col s12">
-                    <div className="card card-body create-project-form">
+                    <div className="loginContainer card card-body create-project-form">
                         <h4 className="py-2">Create A Project</h4>
                         <form onSubmit={createProject}>
                             <div className="input-field col s12">
