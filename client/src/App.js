@@ -9,8 +9,7 @@ import UserContext from './context/UserContext';
 import ProjectDashboard from './components/pages/ProjectDashboard'
 import 'materialize-css/dist/css/materialize.min.css';
 import './styles/style.css'
-import CreateProject from './components/pages/CreateProject';
-import AllProjects from './components/pages/AllProjects';
+
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -55,8 +54,6 @@ export default function App() {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path='/project' component={ProjectDashboard} />
-            <Route path='/createproject' component={CreateProject} />
-            <Route path='/allprojects' component={AllProjects} />
           </Switch>
         </div>
         
