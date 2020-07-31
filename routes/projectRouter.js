@@ -4,7 +4,7 @@ const Project = require('../models/project');
 
 router.post("/new", auth, async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title } = req.body;
 
     // validation
     if (!title) {
@@ -13,7 +13,6 @@ router.post("/new", auth, async (req, res) => {
 
     const newProject = new Project({
       title,
-      description,
       userId: req.user
     });
     const savedProject = await newProject.save();
