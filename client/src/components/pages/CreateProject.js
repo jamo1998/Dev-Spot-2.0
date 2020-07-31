@@ -70,6 +70,7 @@ const CreateProject = () => {
     return (
         <div className="create-a-project">
             <div className="row">
+                <h4 className="center">The web is your canvas! Make your ideas a reality so that you and others can learn and grow together!</h4>
                 <div className="col s12">
                     <div className="loginContainer card card-body create-project-form">
                         <h4 className="py-2">Create A Project</h4>

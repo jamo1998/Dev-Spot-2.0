@@ -48,18 +48,21 @@ export default function Home() {
 
   return (
     <div className="container">
-      <div className="card row">
-        <div className="center">
-            <h6>Name: </h6> <p>{userInfo.username} </p>
-            <p>Email: </p>
-            <p>Github: {userInfo.githubURL }</p>
-            <p>Portfolio: {userInfo.portfolioURL}</p>
-            </div>
-            <div className="center row">
-                <div className="col s8">
-                    <p>Bio: </p>
-                    <p>{userInfo.bio}</p>
-                </div>
+      <div className="card darken-1">
+        <div className="card-content">
+          <div className="card-darken">
+            <h5 className="center">Your Info:</h5>
+            <br>
+            </br>
+          <h6><strong>Name:</strong> {userInfo.username} </h6> 
+            <p className="bolder">Github: {userInfo.githubURL }</p>
+            <p className="bolder">Portfolio: {userInfo.portfolioURL}</p>
+            <br />    
+            <p className="bolder">Bio: </p>
+            <p>{userInfo.bio}</p>
+          </div>
+            
+                
             </div>
       </div> 
       <div className="row">       

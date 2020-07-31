@@ -24,7 +24,7 @@ export default function AuthOptions() {
   }
 
   return (
-    <nav className="teal darken-4"> 
+    <nav className="light-blue darken-4"> 
       <div className="nav-wrapper container">
       <Link to="/" className="left brand-logo">DevSpot</Link>
       {userData.user ? (
@@ -32,7 +32,6 @@ export default function AuthOptions() {
         <ul id="nav-mobile" className="right hide-on-small-only">
           <li> <Link className="nav-link" to="/login" onClick={logout}>Logout</Link> </li>
           <li> <Link className="nav-link" to='/'>Home</Link> </li>
-          <li> <Link className="nav-link" to="/all-projects">Projects</Link> </li>
           <li> <Link className="nav-link" to='/createproject'>Create Project</Link> </li>
           {/* <li> <Link className="nav-link" to='/project'>Your Project</Link> </li> */}
           <li> <Link className="nav-link" to='/all-projects'>All Projects</Link> </li> 

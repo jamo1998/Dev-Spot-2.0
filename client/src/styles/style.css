@@ -46,3 +46,7 @@ main {
 .carousel-parent {
   margin-top: 50px;
 }
+
+.bolder {
+  font-weight: bold
+}
