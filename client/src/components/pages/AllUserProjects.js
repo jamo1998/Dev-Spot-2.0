@@ -6,7 +6,7 @@ import Axios from 'axios';
 const AllUserProjects = () => {
     const {userData} = useContext(UserContext);
     const history = useHistory();
-    const [activeProjects, setActiveProjects] = useState({})
+    const [activeProjects, setActiveProjects] = useState([])
 
     async function getAllUserProjects () {
         if(!userData.user) history.push('/login');
@@ -25,16 +25,17 @@ const AllUserProjects = () => {
     useEffect(() => {getAllUserProjects()}, [])
 
 
-    if(!activeProjects.data) {
+    if(!activeProjects) {
         return null
     }
 
     console.log(activeProjects)
 
-    const eachActiveProject = activeProjects((project) => {
+
+    const eachActiveProject = activeProjects.map((project, i) => {
         return(    
-            <div>
-                <li>
+            <div className="card center" key={i}>
+                <li >
                     {project.title}
                 </li>
                 <li>
@@ -46,6 +47,7 @@ const AllUserProjects = () => {
             </div>
         )
     })
+
 
     return (
         <div>

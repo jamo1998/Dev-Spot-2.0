@@ -2,6 +2,7 @@ import React, {useEffect, useContext, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import Axios from 'axios';
+import AllUserProjects from './AllUserProjects';
 
 export default function Home() {
   const {userData} = useContext(UserContext);
@@ -43,11 +44,13 @@ export default function Home() {
     return null
   }
 
+ 
+
   return (
     <div className="container">
       <div className="card row">
         <div className="center">
-            <p>Name: {userInfo.username} </p>
+            <h6>Name: </h6> <p>{userInfo.username} </p>
             <p>Email: </p>
             <p>Github: {userInfo.githubURL }</p>
             <p>Portfolio: {userInfo.portfolioURL}</p>
@@ -60,8 +63,11 @@ export default function Home() {
             </div>
       </div> 
       <div className="row">       
-        <div className="card center">
-            <p>Projects you have opened!</p>
+        <div className="center">
+            <h3>Projects you have opened!</h3>
+            <div className="all-user-projects">
+              <AllUserProjects />
+            </div>
         </div>
       </div>  
     </div>
