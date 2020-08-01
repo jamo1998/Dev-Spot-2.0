@@ -129,6 +129,7 @@ router.post("/tokenIsValid", async (req, res) => {
     }
 
     const verified = jwt.verify(token, process.env.JWT_SECRET)
+    console.log(verified);
     if(!verified) {
       return res.json(false)
     }
