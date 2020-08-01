@@ -32,12 +32,17 @@ router.get('/all', auth, async (req, res) => {
 
 // Delete a project by ID
 router.delete('/:id', auth, async (req, res) => {
-  const project = await Project.findOne({userId: req.user, _id: req.params.id});
-  if (!project){
-    return res.status(400).json({ msg: 'No project found with this ID that belongs to the current user.'})
-  }
-  const deletedProject = await Project.findByIdAndDelete(req.params.id);
-  res.json(deletedProject)
+    try { 
+      const project = await Project.findOne({userId: req.user, _id: req.params.id});
+      if (!project) {
+        return res.status(400).json({ msg: 'No project found with this ID that belongs to the current user.'})
+      }
+      const deletedProject = await Project.findByIdAndDelete(req.params.id);
+      res.json(deletedProject)
+    } catch (error) {
+      console.log(error)
+    }
+    
 })
 
 // Get project details for user

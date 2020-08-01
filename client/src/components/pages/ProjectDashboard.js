@@ -1,16 +1,55 @@
-import React, { useState, useEffect } from 'react'
-import Comment from '../misc/Comment'
-import M from 'materialize-css'
-
+import React, { useState, useEffect, useContext } from 'react'
+// import Comment from '../misc/Comment'
+// import M from 'materialize-css'
+import {useHistory} from 'react-router-dom';
+import UserContext from '../../context/UserContext';
+import Axios from 'axios';
 
 const ProjectDashboard = (props) => {
-    let [title, setTitle] = useState('')
-    let [author, setAuthor] = useState('')
-    
-    useEffect(() => {
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, {});
-      }, []);
+    const {userData} = useContext(UserContext);
+    const history = useHistory();
+
+    let [projectInfo, setProjectInfo] = useState({})
+
+    // useEffect(() => {
+    //     var elems = document.querySelectorAll('.collapsible');
+    //     var instances = M.Collapsible.init(elems, {});
+    // }, []);
+
+    async function getProjectData() {
+        if(!userData.user) history.push('/login');
+
+        try {
+            const project = await Axios.get('http://localhost:5000/projects/all', {
+              headers:{
+                "x-auth-token":userData.token
+              }
+            });
+            setProjectInfo(project.data);
+            console.log(projectInfo)
+          } catch (error) {
+            console.log(error);
+          }
+    }
+
+    useEffect(() => {getProjectData()}, []);
+
+    if(!projectInfo) {
+        return null
+    }
+
+    // useEffect(() => {
+    //     Axios.get('http://localhost:5000/projects/5f23257d61c6a5305c2ef0b6', {
+    //           headers:{
+    //             "x-auth-token":userData.token
+    //           }
+    //     }).then(response => {
+    //         setProjectInfo(response)
+    //         console.log(projectInfo);
+    //     }).catch (error => {
+    //         console.log(error)
+    //     })
+    // }, [])
 
     
 

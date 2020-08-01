@@ -16,6 +16,7 @@
 body {
   display: flex;
   flex-direction: column;
+  background-color: #EAEAE0;
 }
 
 main {
@@ -40,4 +41,12 @@ main {
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
+}
+
+.carousel-parent {
+  margin-top: 50px;
+}
+
+.bolder {
+  font-weight: bold
 }
